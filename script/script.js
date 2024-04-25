@@ -7,25 +7,14 @@ let gameInterval;
 
 // Función para iniciar el juego
 function startGame() {
-  // Obtener el canvas y el contexto
+  // obtengo el canvas y el contexto
   canvas = document.getElementById("snakeCanvas");
   ctx = canvas.getContext("2d");
 
-  // Crear la serpiente y la comida
+  // creo la serpiente y la comida
   snake = new Snake();
   snake.create();
   food = createFood();
-
-  // Agregar event listeners para los controles táctiles
-  document.getElementById("upButton").addEventListener("click", handleUpButtonClick);
-  document.getElementById("downButton").addEventListener("click", handleDownButtonClick);
-  document.getElementById("leftButton").addEventListener("click", handleLeftButtonClick);
-  document.getElementById("rightButton").addEventListener("click", handleRightButtonClick);
-
-  document.getElementById("upButton").addEventListener("touchstart", handleUpButtonClick);
-  document.getElementById("downButton").addEventListener("touchstart", handleDownButtonClick);
-  document.getElementById("leftButton").addEventListener("touchstart", handleLeftButtonClick);
-  document.getElementById("rightButton").addEventListener("touchstart", handleRightButtonClick);
 
   // Intervalo para actualizar el juego
   gameInterval = setInterval(updateGame, 200);
@@ -33,23 +22,23 @@ function startGame() {
 
 // Función para actualizar el juego en cada intervalo
 function updateGame() {
-  // Limpiar el canvas
+  // limpio el canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Mover y dibujar la serpiente
+  // muevo y dibujo la serpiente
   snake.move();
   snake.draw();
 
-  // Dibujar la comida
+  // dibujo la comida
   ctx.fillStyle = "red";
   ctx.fillRect(food.x * tileSize, food.y * tileSize, tileSize, tileSize);
 
-  // Verificar si la serpiente come la comida
+  // verifico si la serpiente come la comida
   if (snake.eatFood(food)) {
     food = createFood();
   }
 
-  // Verificar si la serpiente colisiona
+  // verifico si la serpiente colisiona
   if (snake.collide()) {
     clearInterval(gameInterval);
     alert("¡Perdiste!");
@@ -115,6 +104,19 @@ function Snake() {
   };
 }
 
+// Event listeners para los controles táctiles
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("upButton").addEventListener("click", handleUpButtonClick);
+  document.getElementById("downButton").addEventListener("click", handleDownButtonClick);
+  document.getElementById("leftButton").addEventListener("click", handleLeftButtonClick);
+  document.getElementById("rightButton").addEventListener("click", handleRightButtonClick);
+
+  document.getElementById("upButton").addEventListener("touchstart", handleUpButtonClick);
+  document.getElementById("downButton").addEventListener("touchstart", handleDownButtonClick);
+  document.getElementById("leftButton").addEventListener("touchstart", handleLeftButtonClick);
+  document.getElementById("rightButton").addEventListener("touchstart", handleRightButtonClick);
+});
+
 // Funciones para manejar eventos táctiles
 function handleUpButtonClick() {
   if (snake.dy !== 1) {
@@ -143,4 +145,3 @@ function handleRightButtonClick() {
     snake.dy = 0;
   }
 }
-
