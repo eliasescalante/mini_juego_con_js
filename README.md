@@ -9,4 +9,4 @@ mini juego de Snake con JavaScript
 - Implementar una interfaz gráfica básica para mostrar los elementos del juego y permitir al usuario interactuar.
 
 
-![captura](dire)
+![captura]([dire](https://github.com/eliasescalante/mini_juego_con_js/blob/main/img/Capture.JPG))
