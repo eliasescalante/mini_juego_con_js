@@ -6,10 +6,13 @@
   <link rel="stylesheet" href="./style/style.css">
   <title>Serpiente Ninja</title>
 </head>
-<body>
+<>
   <h1>Practica de JavaScript</h1>
+  <p>Puntaje: <span id="score">0</span></p> <!-- Agregamos un elemento para mostrar el puntaje -->
   <button onclick="startGame()">Iniciar Juego</button>
-  <canvas id="snakeCanvas" width="400" height="400"></canvas>
+  <div id="game-container"></div>
+    <canvas id="snakeCanvas" width="400" height="400"></canvas>
+</div>
   <div id="controls">
     <div class="control-button" id="upButton">↑</div>
     <div class="control-button" id="downButton">↓</div>
@@ -19,3 +22,4 @@
   <script src="./script/script.js"></script> 
 </body>
 </html>
+
